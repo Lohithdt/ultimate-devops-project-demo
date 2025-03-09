@@ -93,6 +93,8 @@ jobs:
         - name: Docker Push
           uses: docker/build-push-action@v6
           with:
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
             context: src/product-catalog
             file: src/product-catalog/Dockerfile
             push: true
