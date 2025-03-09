@@ -21,10 +21,15 @@ jobs:
             go-version: 1.22
 
         - name: build the project
-          run: go build -o product-catalog-service src/product-catalog-service/main.go
+          run: |
+                cd src/product-catalog
+                go mod download
+                go build -o product-catalog-service main.go
 
         - name: run unit tests
-          run: go test src/product-catalog-service/...
+          run: |
+                cd src/product-catalog 
+                go test ./...
 
     code-quality:
         runs-on: ubuntu-latest
@@ -66,7 +71,6 @@ jobs:
     update-k8s:
         runs-on: ubuntu-latest
         needs: docker
-        - name: update k8s deployment
 
         steps:
         - name: Checkout the source code
