@@ -149,4 +149,4 @@ jobs:
                 git config --global user.name "Lohithdt"
                 git add kubernetes/productcatalog/deploy.yaml
                 git commit -m "[CI]:update deployment image tag"
-                git push 
+                git push origin HEAD:main -f 
